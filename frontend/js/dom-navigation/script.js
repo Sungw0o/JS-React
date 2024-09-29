@@ -44,4 +44,11 @@ val = listItem.nextElementSibling;
 val = listItem.nextElementSibling.nextElementSibling;
 val = listItem.nextElementSibling.nextElementSibling.previousElementSibling
 
+for(let node of list.childNodes){
+    console.log(node);
+}
+
+console.log(array.filter);
+
+
 console.log('val',val);
