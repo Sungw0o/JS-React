@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>GitHub 사용자 검색</title>
+</head>
+<body>
+<div class="container">
+    <div class="error-message" id="errorMessage" style="display: none;">User not found</div>
+    <h1>Search GitHub Users</h1>
+    <p>Enter a username to fetch a user profile and repos</p>
+    <input type="text" id="usernameInput" placeholder="Username..." />
+
+    <div class="user-info" id="userInfo" style="display: none;">
+        <img id="userAvatar" src="" alt="User Avatar" />
+        <div>
+            <h2 id="userName"></h2>
+            <div id="userDetails"></div>
+            <a id="viewProfile" href="#" target="_blank">View Profile</a>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

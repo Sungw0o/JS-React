@@ -1,0 +1,115 @@
+/* 기본 스타일 */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f4f8 25%, #dfe6e9 100%);
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 3em;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+/* 버튼 리스트 스타일 */
+.menu_btn_list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.menu_btn_list button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu_btn_list button:hover {
+    background-color: #3e8e41;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+.menu_btn_list button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
+}
+
+/* 메뉴 정보 표시 영역 스타일 */
+.menu_display {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.menu_item {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.menu_item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.menu_item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.menu_item h3 {
+    margin: 15px 0 10px;
+    color: #2c3e50;
+    font-size: 1.5em;
+}
+
+.menu_item p {
+    margin: 5px 0;
+    color: #7f8c8d;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .menu_btn_list {
+        flex-direction: column;
+    }
+
+    .menu_item {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .menu_item {
+        width: 100%;
+    }
+
+    .menu_btn_list button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
