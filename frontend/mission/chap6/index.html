@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 생성기</title>
+    <style>
+        /* reset */
+        html, body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body, header, div, footer, nav, section, article, aside, figure, ul, ol, li, dl, dt, dd, p, h1, h2, h3, h4, h5, h6, table, tr, th, td, caption, thead, tbody, tfoot, form, fieldset, address, span {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        body {
+            font-size: 14px;
+            line-height: 1.6;
+            background-color: #ddd;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            min-width: 500px;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        body * {
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            margin: 0 auto;
+            height: auto;
+            background-color: #fff;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+            padding: 30px;
+        }
+
+        .content .top {
+            border-bottom: 1px solid #ddd;
+            padding: 30px 0 15px;
+        }
+
+        .content .top h2 {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .content .top .resultArea {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .content .btm {
+            padding: 30px 0;
+        }
+
+        .content .btm .input_wrap input {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            margin-bottom: 20px;
+        }
+
+        .content .btm .checkList_wrap {
+            margin-bottom: 20px;
+        }
+
+        .content .btm .checkList_wrap p {
+            font-size: 12px;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .content .btm .checkList_wrap ul {
+            margin-bottom: 10px;
+        }
+
+        .content .btm .checkList_wrap ul li {
+            height: 30px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content .btm .checkList_wrap ul li label {
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .content .btm .checkList_wrap ul li input {
+            width: 16px;
+            height: 16px;
+        }
+
+        .content .btm .checkList_wrap button {
+            display: block;
+            width: 100%;
+            height: 30px;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .content .notice {
+            background-color: #eee;
+            padding: 30px;
+            line-height: 2;
+        }
+    </style>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="content">
+        <div class="top">
+            <h2>비밀번호 생성하기</h2>
+            <div class="resultArea"></div>
+        </div>
+        <div class="btm">
+            <div class="input_wrap">
+                <input type="number" id="pwLength" placeholder="비밀번호 길이 (5 ~ 70)">
+            </div>
+            <div class="checkList_wrap">
+                <p>포함할 문자 :</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="numbers">
+                        <label for="numbers">Numbers</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="smLetters">
+                        <label for="smLetters">Small Letters</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="capLetters">
+                        <label for="capLetters">Capital Letters</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="symbols">
+                        <label for="symbols">Symbols</label>
+                    </li>
+                </ul>
+                <button>생성하기</button>
+            </div>
+            <div class="notice">
+                <ul>
+                    <li>* 최소 길이는 5입니다.</li>
+                    <li>* 최대 길이는 70입니다.</li>
+                    <li>* 강력한 비밀번호는 10~16자리여야 합니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
