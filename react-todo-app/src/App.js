@@ -1,24 +1,12 @@
-// 리액트 라이브러리에서 컴포넌트를 가져옴
 import React, { Component } from "react";
 import "./App.css";
 
-// 랜더 안에서 UI를 작성
 export default class App extends Component {
-
   state = {
-    todoData : [
-      {
-        id: "1",
-        title: "공부하기",
-        completed: true
-      },
-      {
-        id: "2",
-        title: "청소하기",
-        completed: false
-      },
-    ]
-  }
+    todoData: [],
+    value: "",
+  };
+
   btnStyle = {
     color: "#fff",
     border: "none",
@@ -28,20 +16,45 @@ export default class App extends Component {
     float: "right",
   };
 
-  getStyle = () => {
+  getStyle = (completed) => {
     return {
       padding: "10px",
       borderBottom: "1px #ccc dotted",
-      textDecoration: "none",
+      textDecoration: completed ? "line-through" : "none",
     };
   };
 
-  
+  handleClick = (id) => {
+    let newTodoData = this.state.todoData.filter((data) => data.id !== id);
+    this.setState({ todoData: newTodoData });
+  };
 
-  handleClick = (id) =>{
-    let newTodoData = this.state.todoData.filter(data => data.id !==id)
-    console.log('newTodoData', newTodoData);
-    this.setState({todoData: newTodoData})
+  handleChange = (e) => {
+    this.setState({ value: e.target.value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (this.state.value.trim() === "") return; // 빈 입력 방지
+
+    let newTodo = {
+      id: Date.now(),
+      title: this.state.value,
+      completed: false,
+    };
+
+    this.setState({ todoData: [...this.state.todoData, newTodo], value: "" });
+  };
+
+  handleCompleteChange = (id) => {
+    let newTodoData = this.state.todoData.map((data) => {
+      if (data.id === id) {
+        return { ...data, completed: !data.completed }; // 새로운 객체 반환
+      }
+      return data;
+    });
+    this.setState({ todoData: newTodoData });
   };
 
   render() {
@@ -51,20 +64,36 @@ export default class App extends Component {
           <div className="title">
             <h1>할 일 목록</h1>
           </div>
-        
-        {this.state.todoData.map((data) => ( // 인덱스도 넣을 수 있으나 추천 하지는 않음
-          <div style={this.getStyle()} key={data.id}> 
-            <input type="checkbox" defaultChecked={false} />
-            {data.title} 
-            <button style={this.btnStyle} onClick={()=> this.handleClick(data.id)}>x</button>
-          </div>
-      ))}
 
-        <form style={{display:'flex'}}>
-          <input type="text" name="value" style={{flex}}></input>
+          {this.state.todoData.map((data) => (
+            <div style={this.getStyle(data.completed)} key={data.id}>
+              <input
+                type="checkbox"
+                checked={data.completed}
+                onChange={() => this.handleCompleteChange(data.id)}
+              />
+              {data.title}
+              <button style={this.btnStyle} onClick={() => this.handleClick(data.id)}>x</button>
+            </div>
+          ))}
 
-        </form>
-        </div> 
+          <form style={{ display: "flex" }} onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="value"
+              style={{ flex: "10", padding: "5px" }}
+              placeholder="해야 할 일을 입력하세요."
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              type="submit"
+              value="입력"
+              className="btn"
+              style={{ flex: "1" }}
+            />
+          </form>
+        </div>
       </div>
     );
   }
